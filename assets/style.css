@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+html, body {
+    margin: 0;
+}
+
+/* dashboard */
+.container {
+    display: grid;
+    grid-template-areas:
+        "nav header"
+        "nav content";
+    grid-template-columns: 12rem 1fr;
+    grid-template-rows: auto 1fr;
+    grid-gap: .8rem 1.2rem;
+}
+
+nav {
+    grid-area: nav;
+    background-color: slategray;
+    color: whitesmoke;
+    width: 12rem;
+    height: 100vh;
+    position: fixed;
+}
+
+#logo {
+    font-size: 2rem;
+    color: whitesmoke;
+    padding: 0 0 0 2rem;
+}
+
+#logo i {
+    margin-top: 5rem;
+}
+
+ul {
+    list-style: none;
+    padding: 2rem 1.2rem;
+}
+
+nav li {
+    padding: 8px 16px;
+    border-radius: 3px;
+}
+
+nav li:hover {
+    background: rgba(18, 25, 37, 0.08);
+    cursor: pointer;
+}
+
+nav a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+header {
+    grid-area: header;
+}
+
+header h3 {
+    color: darkslategray;
+    padding: 5rem 0 1rem;
+}
+
+main {
+    grid-area: content;
+}
+
+/* journal display in accordion */
+.journal-container {
+    width: 100%;
+}
+
+.title:link, .title:visited {
+    color: darkslategray;
+    text-decoration: none;
+    border-bottom: 1px dotted darkslategray;
+}
+
+.title:hover {
+    color: darkslategray;
+    border-bottom-color: darkslategray;
+}
+
+small {
+    color: #999;
+    font-style: italic;
+}
+
+.journal-content {
+    color: darkslategray;
+    text-align: justify;
+    padding-right: 4em;
+    line-height: 1.5em;
+}
+
+span {
+    text-transform: uppercase;
+}
+
+/* login form */
+.full-screen-container {
+    background-image: url('background_image.jpg');
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background-color: hsla(201, 100%, 16%, 0.6);
+    padding: 50px 30px;
+    min-width: 400px;
+    width: 50%;
+    max-width: 600px;
+}
+
+.login-title {
+    color: white;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    font-weight: normal;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    color: white;
+    font-weight: lighter;
+    font-size: 1.2em;
+    margin-bottom: 7px;
+}
+
+.input-group input {
+    font-size: 1.5em;
+    padding: .1em .25em;
+    background-color: hsla(201, 100%, 91%, 0.3);
+    border: 1px solid hsl(201, 100%, 5%);
+    outline: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: lighter;
+}
+
+.input-group input:focus {
+    border: 1px solid hsl(201, 100%, 35%);
+}
+
+.login-btn {
+    padding: 10px 30px;
+    width: 100%;
+    border-radius: 3px;
+    background: hsla(201, 100%, 55%, .1);
+    border: 1px solid hsl(201, 100%, 45%);
+    outline: none;
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: hsla(201, 100%, 55%, .3);
+}
+
+.login-btn:focus {
+    background-color: hsla(201, 100%, 55%, .5);
+}
+
+.login-btn:active {
+    transform: translate(0, 1px);
+}
+
+.signup-link {
+    color: whitesmoke;
+}
+
+/* add journal page */
+.btn {
+    width: 10rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: none;
+    background: slategray;
+    color: whitesmoke;
+}
+
+.btn:hover {
+    background: whitesmoke;
+    color: slategray;
+    border: 1px solid slategray;
+}
