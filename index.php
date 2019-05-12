@@ -5,42 +5,35 @@
 
     global $pdo;
 
-    // if(isset($_SESSION['logged_in']) && isset($_SESSION['userID'])) {
-    //     // display index
-    //     $query = $pdo->prepare("SELECT * FROM entries WHERE userID = :userID");
-    //     $query->execute([":userID" => $_SESSION['userID']]);
-    //     $journals = $query->fetchAll();
 ?>
 
 
 
 <?php
-    // }else {
-        // display login
-        if(isset($_POST['username'])) {
-            $username = $_POST['username'];
+    if(isset($_POST['username'])) {
+        $username = $_POST['username'];
 
-            if(empty($username)) {
-                $error = 'All fields are required!';
+        if(empty($username)) {
+            $error = 'All fields are required!';
+        }else {
+            $query = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+            $query->execute([":username" => $_POST['username']]);
+            $user = $query->fetch(PDO::FETCH_ASSOC);
+
+            if(password_verify($_POST['password'], $user['password'])) {
+                // user entered correct info
+                $_SESSION['logged_in'] = true;
+                // print_r($user);
+                $_SESSION['userID'] = $user['userID'];
+                $_SESSION['username'] = $user['username'];
+
+                header('Location: admin/dashboard.php');
+                exit();
             }else {
-                $query = $pdo->prepare("SELECT * FROM users WHERE username = :username"); //
-                $query->execute([":username" => $_POST['username']]);
-                $user = $query->fetch(PDO::FETCH_ASSOC);
-
-                if(password_verify($_POST['password'], $user['password'])) {
-                    // user entered correct info
-                    $_SESSION['logged_in'] = true;
-                    // print_r($user);
-                    $_SESSION['userID'] = $user['userID'];
-                    $_SESSION['username'] = $user['username'];
-
-                    header('Location: admin/dashboard.php');
-                    exit();
-                }else {
-                    $error = 'Incorrect password! Please try again.';
-                }
+                $error = 'Incorrect password! Please try again.';
             }
         }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +72,3 @@
     </div>
 </body>
 </html>
-
-<?php
-    // }
-?>

@@ -1,14 +1,9 @@
 <?php
     include_once('../includes/connection.php');
+
     session_start();
+
     global $pdo;
-    // $errors = array();
-    // if(isset($errors)) {
-    //     print_r($errors);
-    // }else{
-    //     $errors = array();
-    //     print_r("not set");
-    // }
 
     if(isset($_POST['username']) && isset($_POST['password'])) {
         $errors = array();
